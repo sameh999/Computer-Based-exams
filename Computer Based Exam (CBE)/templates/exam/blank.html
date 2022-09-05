@@ -1,0 +1,111 @@
+{% load static %}
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <style>
+        h2 {
+            color: red;
+        }
+
+        .ans {
+            margin: 30px;
+        }
+
+
+        button {
+            padding-top: 2px;
+            h3: padding-bottom 3px;
+            font-size: 12px;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            border: 1px solid #007251;
+            color: #ffffff;
+            background-color: #00af7c;
+            display: inline-block;
+            padding: 4px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 2px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+        }
+
+        .n {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        a {
+            padding-top: 2px;
+            h3: padding-bottom 3px;
+            font-size: 12px;
+            font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+            border: 1px solid #007251;
+            color: #ffffff;
+            background-color: #00af7c;
+            display: inline-block;
+            padding: 4px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 2px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .2), 0 1px 2px rgba(0, 0, 0, .05);
+        }
+
+    </style>
+    <script>
+
+    </script>
+</head>
+<body oncontextmenu="return false">
+<form method="post" action="{% url 'exam:answer' %}">
+    {% csrf_token %}
+    <h2>({{ exam.Question_no }})&nbsp;{{ exam.Question }} </h2>
+    <div class="ans">
+        {% if ans == 'a' %}
+            <h3><label><input type="radio" checked name="ans" value="a">{{ exam.Ans1 }}</label></h3>
+            <h3><label><input type="radio" name="ans" value="b">{{ exam.Ans2 }}</label></h3>
+            <h3><label><input type="radio" name="ans" value="c">{{ exam.Ans3 }}</label></h3>
+            <h3><label><input type="radio" name="ans" value="d">{{ exam.Ans4 }}</label></h3>
+        {% elif ans == 'b' %}
+
+            <h3><label><input type="radio" name="ans" value="a">{{ exam.Ans1 }}</label></h3>
+            <h3><label><input type="radio" checked name="ans" value="b">{{ exam.Ans2 }}</label></h3>
+            <h3><label><input type="radio" name="ans" value="c">{{ exam.Ans3 }}</label></h3>
+            <h3><label><input type="radio" name="ans" value="d">{{ exam.Ans4 }}</label></h3>
+        {% elif ans == 'c' %}
+
+            <h3><label><input id="ans1" type="radio" name="ans" value="a">{{ exam.Ans1 }}</label></h3>
+            <h3><label><input id="ans1" type="radio" name="ans" value="b">{{ exam.Ans2 }}</label></h3>
+            <h3><label><input id="ans1" type="radio" checked name="ans" value="c">{{ exam.Ans3 }}</label></h3>
+            <h3><label><input type="radio" name="ans" value="d">{{ exam.Ans4 }}</label></h3>
+        {% elif ans  == 'd' %}
+
+            <h3><label><input id="ans1" type="radio" checked name="ans" value="a">{{ exam.Ans1 }}</label></h3>
+            <h3><label><input id="ans1" type="radio" name="ans" value="b">{{ exam.Ans2 }}</label></h3>
+            <h3><label><input id="ans1" type="radio" name="ans" value="c">{{ exam.Ans3 }}</label></h3>
+            <h3><label><input type="radio" name="ans" value="d">{{ exam.Ans4 }}</label></h3>
+        {% else %}
+
+            <h3><label><input id="ans1" type="radio" name="ans" value="a">{{ exam.Ans1 }}</label></h3>
+            <h3><label><input id="ans1" type="radio" name="ans" value="b">{{ exam.Ans2 }}</label></h3>
+            <h3><label><input id="ans1" type="radio" name="ans" value="c">{{ exam.Ans3 }}</label></h3>
+            <h3><label><input type="radio" name="ans" value="d">{{ exam.Ans4 }}</label></h3>
+
+        {% endif %}
+       <p style="color: red"> {{ ans }}</p>
+
+    </div>
+    <div class="n">
+        <button type="submit" id="cancelTest" class="btn btn-blue"> Answer</button>
+        <a href="{% url 'exam:question' %} " id="cancelTest" class="btn btn-blue">Next </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
+    </div>
+</form>
+</body>
+</html>

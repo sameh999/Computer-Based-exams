@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>result</title>
+    <style>
+
+
+        h1 {
+            color: #338d93;
+        }
+
+        #customers {
+            font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 70%;
+        }
+
+        #customers td, #customers th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        #customers tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #customers tr:hover {
+            background-color: #ddd;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #338d93;
+            color: white;
+        }
+
+        a {
+
+            margin-left: 30px;
+            margin-top: 40px;
+            background-color: #338d93;
+            padding: 20px;
+            padding-left: 30px;
+            padding-right: 30px;
+            position: absolute;
+            horiz-align: center;
+
+        }
+    </style>
+</head>
+<body>
+<center><h1>Name : {{ stu_name }}</h1></center>
+<br><br>
+<center>
+    <table id="customers">
+        <tr>
+            <th>Exam Name :</th>
+            <td>{{ course__n }}</td>
+        </tr>
+
+        <tr>
+            <th>Total Degree :</th>
+            <td>{{ total_degree }}</td>
+        </tr>
+        <tr>
+            <th>Degree :</th>
+            <td>{{ degree }}</td>
+        </tr>
+        <tr>
+            <th>Question Number :</th>
+            <td>{{ count }}</td>
+        </tr>
+        <tr>
+            <th> Answered Question :</th>
+            <td>{{ answered }}</td>
+        </tr>
+        <tr>
+            <th>Status :</th>
+            <td>{{ passed }}</td>
+        </tr>
+    </table>
+</center>
+<div>
+    <center>
+        <a href="{% url 'student:dashboard' %}" class="btn btn-info" role="button"> <strong>back</strong></a>
+    </center>
+</div>
+
+</body>
+</html>

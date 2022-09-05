@@ -1,0 +1,135 @@
+{% load static %}
+<html>
+
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Based Exam</title>
+    <link href="{% static 'resources/style/teplate.css' %}" rel="stylesheet">
+    <script src="{% static 'resources/js/jquery-1.js' %}"></script>
+    <script src="{% static 'resources/js/bootstrap.js' %}"></script>
+
+</head>
+
+<body class="exampage" oncontextmenu="return false">
+<div class="main container-fluid">
+    <div class="row-fluid">
+        <div class="content span12">
+            <div class="main-content">
+                <fieldset class="well">
+                    <div class="header">
+
+                        <img class="oes-logo" src="{% static 'resources/images/inner-mkcloeslogo.png' %}" alt="">
+                        <img class="mkcl-logo" src="{% static 'resources/images/1_companylogo.png' %}" alt="">
+
+                        <div class="eventname-title">{{ ex_name }}</div>
+                    </div>
+
+                    <form action="{% url 'exam:result' %}" method="post" id="frmendTest">
+                        {% csrf_token %}
+                        <div>
+                            <div class="span3">
+                                <div class="holder">
+                                    <div class="profile-timer">
+                                        <div class="dp">
+                                            <img src="{% static 'resources/images/defaultCandidate.jpg' %}">
+                                        </div>
+                                        Time Remaining
+                                        <span id="time-text"> </span>
+                                        <input id="endExamEnablePercentage" name="eQuestion_nondExamEnablePercentage"
+                                               value="100"
+                                               type="hidden">
+
+                                        <input id="hidTtlDuration" value="1800" type="hidden">
+                                        <input id="hidelapsedTimeDuration" value="61" type="hidden">
+                                        <input id="timeLeft" value="29:59" type="hidden">
+                                        <input id="updateElapsedTime" value="60" type="hidden">
+                                        <span></span>
+                                    </div>
+                                    <div class="totalq">Total number of Questions : <strong
+                                            id="ttlcount">{{ count }}</strong>
+                                        <div class="legend">
+                                            <span class="attempted"><span id="Cntans" class="btn btn-greener">15</span> Answered</span>
+                                            <span class="current"><span id="CntNans" class="btn btn-red">0</span> Not Answered</span>
+                                            <span class="unattempted"><span id="Cntntvisited" class="btn">0</span> Not Visited</span>
+                                        </div>
+                                    </div>
+                                    <div class="palette">
+                                        <div class="quick-ques">
+                                            {% for e in exam %}
+                                                <a title="Answered" data-status="noans" class="btn btn-greener"
+                                                   id="lnk1525"
+                                                   href="{% url 'exam:blank' e.Question_no %}"
+                                                   target="QuestionContainer">{{ e.Question_no }}</a>
+                                            {% endfor %}
+
+
+                                        </div>
+                                        <div class="actions">
+                                            <button class="btn btn-red" id="endTest" name="endTest"
+                                                    type="submit">End Test
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span9">
+                                <div class="holder">
+                                    <br>
+                                    <br>
+
+
+                                    <label class="alert-error" id="error" style="display: none"></label>
+                                    <div class="questions-area">
+                                        <iframe src="{% url 'exam:question' %}" id="QuestionContainer"
+                                                name="QuestionContainer"></iframe>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </fieldset>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+    var s = 0;
+    var m = {{ time }};
+
+    // Update the count down every 1 second
+    var x = setInterval(function () {
+        if (s == 0) {
+            if (m == 0) {
+                document.getElementById("time-text").innerHTML = "time expired ";
+                document.getElementById("endTest").click();
+                delay(function () {
+                }, 5000); // end delay
+
+            } else {
+                m -= 1;
+                s = 60;
+            }
+        } else {
+            s -= 1;
+            var minutes = m;
+            var seconds = s;
+            if (m < 10) {
+                minutes = "0" + m;
+            }
+            if (s < 10) {
+                seconds = "0" + s;
+            }
+            document.getElementById("time-text").innerHTML = minutes + ":" + seconds;
+
+        }
+    }, 1000);
+</script>
+</body>
+
+</html>

@@ -1,0 +1,55 @@
+{% load static %}
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="{% static 'resources/style/template_home.css' %}" type="text/css">
+    <script src="{% static 'resources/js/jquery-1.9.0.min.js' %}"></script>
+    <script src="{% static 'resources/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'resources/js/equalize.min.js' %}"></script>
+    <script src="{% static 'resources/js/selectFix.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'resources/style/jplayer.blue.monday.css' %}" type="text/css">
+    <script src="{% static 'resources/js/jquery.jplayer.min.js' %}"></script>
+    <script src="{% static 'resources/js/oesplayer.js' %}"></script>
+    <title>CBE Home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body cz-shortcut-listen="true" style="zoom: 1;">
+
+    <div class="main">
+        <div id="home">
+            <div class="logo-holder" id="logoDiv">
+                <span>
+                    <img id="logo" src="{% static 'resources/images/1_mkcloeslogo.png' %}" alt="OES School Project">
+                </span>
+            </div>
+            <form method="post" action="">
+                <a id="s" ><button type="button" class="btn-huge" id="openOES"> Click Here To Start </button></a>
+            </form>
+            <div class="footer">© 2018 CBE.Version : 1.0<br>
+                Powered by <img style="width: 24px;height: 25px;" src="{% static 'resources/images/1_companylogo.png' %}" alt="MKCL">
+                FCI_ZU_IT.
+                <br>
+
+              
+            </div>
+            <script type="text/javascript">
+                var oesWin;
+                $('#s').click(function() {
+                    oesWin = window.open("candidate", 'student', 'toolbar=yes,scrollbars=yes,resizable=yes,top=500,left=500,width=4000,height=4000');
+                });
+
+            </script>
+        </div>
+    </div>
+</body>
+
+</html>

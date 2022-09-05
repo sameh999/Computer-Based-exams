@@ -1,0 +1,241 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Based Exam</title>
+    <style type="text/css">
+        .highlightText {
+            color: red;
+
+        }
+
+        .links {
+            width: 790px;
+        }
+
+        .languagearea {
+            width: 200px;
+        }
+
+        .picsaction {
+            width: 220px;
+        }
+
+        .picholder {
+            margin-bottom: 10px;
+            padding: 5px 5px;
+            border: 1px solid #b5cee9;
+            background-color: #e4edf7;
+        }
+
+        .instructionarea {
+            height: 350px;
+
+        }
+
+        .span2 {
+            width: 100px;
+        }
+
+        .redText {
+            color: red;
+        }
+
+        .exampage .profile-timer .dp {
+            width: 50px;
+            height: 65px;
+            overflow: hidden;
+            border: 1px solid #000;
+            float: left;
+        }
+
+        img.resize {
+            height: auto;
+            width: 90px;
+        }
+
+        img.resize {
+            height: 135px;
+            width: auto;
+        }
+
+    </style>
+    <link href="{% static 'resources/style/teplate.css' %}" rel="stylesheet">
+    <script src="{% static 'resources/js/jquery-1.js' %}"></script>
+    <script src="{% static  'resources/js/bootstrap.js' %}"></script>
+    <script>
+        window.onload = function () {
+            var checker = document.getElementById('disclaimer');
+            var sendbtn = document.getElementById('proceed');
+            // when unchecked or checked, run the function
+            checker.onchange = function () {
+                if (this.checked) {
+                    sendbtn.disabled = false;
+                } else {
+                    sendbtn.disabled = true;
+                }
+
+            }
+        }
+    </script>
+</head>
+
+<body class="exampage">
+<div class="main container-fluid">
+    <div class="row-fluid">
+        <div class="content span12">
+            <div class="main-content">
+                <fieldset class="well">
+                    <div class="header">
+
+                        <img class="oes-logo" src="{% static 'resources/images/inner-mkcloeslogo.png' %}" alt="">
+                        <img class="mkcl-logo" src="{% static 'resources/images/companylogo.png' %}" alt="">
+                        <div class="eventname-title">General Instructions</div>
+                    </div>
+                    <div class="holder">
+                        <div class="span10">
+                            <div id="firstPage">
+                                <div class="holder">
+
+                                    <div style="padding-top: 20px;font-size: 1.286em;">
+                                        Instructions
+                                    </div>
+                                    <div class="questions-area">
+                                        <div class="question">
+                                            <b>Please read the following instructions carefully.</b>
+                                        </div>
+                                        <div class="qanswer" style="overflow: auto; height: 300px">
+
+                                            <p><strong>How to take the exam?</strong></p>
+                                            <ul>
+                                                <li>The clock has been set at server and count down timer at the top
+                                                    right corner of the screen will display left out time to closure
+                                                    from where you can monitor time you have to complete the exam.
+                                                </li>
+                                                <li>Click one of the answer option buttons to select your answer.</li>
+                                                <li>To change an answer, simply click the desired option button.</li>
+                                                <li>Click on SAVE & NEXT to save the answer before moving to the next
+                                                    question. The next question will automatically be displayed.
+                                                </li>
+                                                <li>Make sure you click on&nbsp;<strong>SAVE &amp; NEXT</strong>&nbsp;button
+                                                    every time you want to save your answer.
+                                                </li>
+                                                <li>To go to a question, click on the question number in the Question
+                                                    Palette on the right hand side of the screen.
+                                                </li>
+                                                <li>The color coded diagram on the right side of the screen shows the
+                                                    status of the questions :
+                                                </li>
+                                                <ul>
+                                                    <li><a class="btn" style="height:7px;"></a>&nbsp;White - you have
+                                                        not visited question&nbsp;
+                                                    </li>
+                                                    <li><a class="btn btn-red" style="height:7px;"></a>&nbsp;Red&nbsp;-
+                                                        you have not answered question
+                                                    </li>
+                                                    <li><a class="btn btn-green" style="height:7px;"></a>&nbsp;Green&nbsp;-
+                                                        you have answered question
+                                                    </li>
+
+                                                </ul>
+                                                <li>Only the answered questions (saved) will be considered for
+                                                    calculating the final score.
+                                                </li>
+                                                <li>When the time left becomes 0, then your assessment will be submitted
+                                                    by default, and you will not be able to make any changes.
+                                                </li>
+                                                <li><strong>Do Not PRESS any keyboard key once the exam is started. This
+                                                    will LOCK your exam. You can connect with the exam invigilator to
+                                                    unlock and continue giving the exam.</strong></li>
+                                                <li>If there is a power failure or network problem while candidate is
+                                                    attempting the exam, Candidate can login again after the problem is
+                                                    resolved and continue the Exam. Candidate will be allocated the
+                                                    remaining time and the remaining un-attempted questions.
+                                                </li>
+                                                <li>After the candidate starts the examination it will end automatically
+                                                    after the stipulated time elapses provided the candidate must be
+                                                    logged in to the exam system during the time elapses.
+                                                </li>
+                                                <li><strong>If Candidate closes the exam window without ending the test
+                                                    or before Time UP, his/her result will not be considered.</strong>
+                                                </li>
+                                                <li>Once the examination time is up, he/she will not be able to attempt
+                                                    it again.
+                                                </li>
+                                                <li>Candidate needs to complete the exam in mentioned time only.
+                                                    Extension in time is not allowed.
+                                                </li>
+                                                <li>A Practice Examination is provided online in your login for
+                                                    Examination hands on before the start of Main exam. Candidate should
+                                                    attempt the Main Examination only after attempting the practice
+                                                    examination.
+                                                </li>
+
+                                            </ul>
+                                            <p style="text-align:center;"><u>ALL THE BEST FOR YOUR EXAMINATION</u></p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div id="secondPage">
+
+
+                                <br>
+
+
+                                <div class="redText declm">
+                                    <br>
+
+
+                                    <form action="{% url 'exam:test' %}" method="post">
+                                        {% csrf_token %}
+                                        <label><input id="disclaimer" type="checkbox" name="ch_bt">
+                                            <strong>I have read and understood the instructions</strong>
+                                        </label>
+                                        <br>
+                                        <input type="submit" id="proceed" class="btn btn-blue"
+                                               value="I am ready to begin" disabled="true">
+                                        <a href="{% url 'student:dashboard' %}" id="cancelTest"
+                                           class="btn btn-blue">Cancel</a>
+                                    </form>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="span2">
+                            <div style="padding: 35px"></div>
+                            <div class="span4"></div>
+                            <img src="{% static 'resources/images/defaultCandidate.jpg' %} "
+                                 style="border:1pt black solid;" alt="" class="resize">
+                        </div>
+
+                    </div>
+                    <input id="disclaimer"
+                           value="&lt;p&gt;&lt;strong&gt;I have read and understood the instructions&lt;/strong&gt;&lt;/p&gt;"
+                           type="hidden">
+                </fieldset>
+            </div>
+            <div class="footer span12">
+                <div class="holder">
+                    <p class="pull-left">Copyright © 2018 CBE. All Rights Reserved.</p>
+                    <a id="to-top" class="btn btn-grey pull-right" href="#"><i class="icon-chevron-up icon-greyer"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'resources/style/teplate.css' %}" rel="stylesheet">
+    <script src="{% static 'resources/js /jquery-1.js' %}"></script>
+    <script src="{% static 'resources/js/bootstrap.js' %}"></script>
+    <title>Admin</title>
+    <style type="text/css">
+        a {
+            cursor: pointer;
+        }
+
+        tab_text {
+            text-transform: uppercase;
+            font-weight: normal;
+            font-family: Lucida Sans Unicode Lucida Grande sans-serif;
+            text-shadow: 1px 1px 0 #ffffff;
+            font-size: 1.071em
+        }
+
+        .label-attempt {
+            background-color: #fff;
+            padding: 1px 2px;
+            color: #666;
+            border: solid 1px;
+            border-color: #666;
+            text-shadow: 0 0px 0 rgba(0, 0, 0, 0);
+            font-weight: normal;
+        }
+        .looogo{
+            width: 500px;
+            margin-left: 200px;
+            margin-top: 130px;
+        }
+
+    </style>
+
+</head>
+
+<body class="inner" cz-shortcut-listen="true" style="zoom: 1;">
+    <div class="main container" >
+        <div class="row" >
+            <div class="left-sidebar span3" >
+                <div id="logo">
+                    <img src="{% static 'resources/images/inner-mkcloeslogo.png' %}" alt="OES" >
+                </div>
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="container">
+                            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                            </a>
+                            <div class="nav-collapse collapse">
+                                <ul class="nav side-menu">
+                                    <li><a href="{% url 'adminstrator:add_doctor' a_ssn  %} "><i class="icon-th-large"></i> Add Doctor</a></li>
+                                    <li><a href="{% url 'adminstrator:add_student' a_ssn %}"><i class="icon-th-large"></i> Add Student</a></li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="content span9">
+                <div class="content-above">
+                    <div class="holder">
+                        <div class="profile">
+                            <div class="holder">
+                                <div class="display-pic">
+                                    <div class="dp">
+                                        <img src="{% static 'resources/images/defaultCandidate.jpg' %}">
+                                    </div>
+                                </div>
+                                <div class="display-info">
+                                    <p>{{name }}</p>
+                                    <div class="btn-group">
+                                        <a href="{% url 'adminstrator:log' %}"class="btn btn-orange">
+                                            <font>Logout</font>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-top">
+                    <div class="holder">
+                    </div>
+                </div>
+                <fieldset class="well">
+
+                    <legend>
+                            <span><img src="{% static 'resources/images/dashboard.png' %}" alt=""> Main<span class="pull-right"></span>
+                            </span></legend>
+
+
+
+                    <div >
+
+                        <img class="looogo"src="{% static 'resources/images/1_mkcloeslogo.png' %} " alt="" >
+
+                    </div>
+                </fieldset>
+                 
+                </div>
+                <br>
+
+                <div class="footer span9">
+                    <div class="holder">
+                        <p class="pull-left">Copyright © 2018 CBE. All Rights Reserved.</p>
+                        <a id="to-top" class="btn btn-grey pull-right" href="#"><i class="icon-chevron-up icon-greyer"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,120 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Based Exam</title>
+    <link href="{% static 'resources/style/teplate.css' %}" rel="stylesheet">
+    <script src="{% static 'resources/js/jquery-1.js' %}"></script>
+    <script src="{% static 'resources/js/bootstrap.js' %}"></script>
+</head>
+
+<body class="exampage">
+<div class="main container-fluid">
+    <div class="row-fluid">
+        <div class="content span12">
+            <div class="main-content">
+                <fieldset class="well">
+                    <div class="header">
+
+                        <img class="oes-logo" src="{% static 'resources/images/inner-mkcloeslogo.png' %}" alt="">
+                        <img class="mkcl-logo" src="{% static 'resources/images/companylogo.png' %}" alt="">
+
+                        <div class="eventname-title">Demo Test bank</div>
+                    </div>
+
+                    <form action="{% url 'student:test-bank' stu_ssn %}" method="post" id="frmendTest">
+                        {% csrf_token %}
+                        <div>
+                            <div class="span3">
+                                <div class="holder">
+                                    <div class="profile-timer">
+                                        <div class="dp">
+                                            <img src="{% static 'resources/images/defaultCandidate.jpg' %}">
+                                        </div>
+                                        Time Remaining
+                                        <span id="time-text"> 28:22</span>
+                                        <input id="endExamEnablePercentage" name="endExamEnablePercentage" value="100"
+                                               type="hidden">
+
+                                        <input id="hidTtlDuration" value="1800" type="hidden">
+                                        <input id="hidelapsedTimeDuration" value="61" type="hidden">
+                                        <input id="timeLeft" value="29:59" type="hidden">
+                                        <input id="updateElapsedTime" value="60" type="hidden">
+                                        <span></span>
+                                    </div>
+                                    <div class="totalq">Total number of Questions : <strong id="ttlcount">15</strong>
+                                        <div class="legend">
+                                            <span class="attempted"><span id="Cntans" class="btn btn-greener">15</span> Answered</span>
+                                            <span class="current"><span id="CntNans" class="btn btn-red">0</span> Not Answered</span>
+                                            <span class="unattempted"><span id="Cntntvisited" class="btn">0</span> Not Visited</span>
+                                        </div>
+                                    </div>
+                                    <div class="palette">
+                                        <div class="quick-ques">
+                                            <a title="Answered" data-status="noans" class="btn btn-greener" id="lnk1525"
+                                               href="{% url 'student:blank-bank' %}" target="QuestionContainer">1</a>
+
+                                            <a title="Answered" data-status="nostatus" class="btn btn-greener"
+                                               id="lnk40780" href="{% url 'student:blank-bank' %}"
+                                               target="QuestionContainer">2</a>
+
+                                            <a title="Answered" data-status="nostatus" class="btn btn-greener"
+                                               id="lnk1522" href="{% url 'student:blank-bank' %}"
+                                               target="QuestionContainer">3</a>
+
+                                            <a title="Marked" data-status="nostatus" class="btn btn-greener"
+                                               id="lnk40779" href="{% url 'student:blank-bank' %}"
+                                               target="QuestionContainer">4</a>
+
+                                            <a title="Answered" data-status="nostatus" class="btn btn-greener"
+                                               id="lnk1529" href="{% url 'student:blank-bank' %}"
+                                               target="QuestionContainer">5</a>
+
+                                            <a title="Answered" data-status="nostatus" class="btn btn-greener"
+                                               id="lnk1530" href="{% url 'student:blank-bank' %}"
+                                               target="QuestionContainer">6</a>
+
+                                            <a title="Answered" data-status="nostatus" class="btn btn-greener"
+                                               id="lnk40676" href="{% url 'student:blank-bank' %}"
+                                               target="QuestionContainer">7</a>
+
+                                        </div>
+                                        <div class="actions">
+
+                                            <button class="btn btn-red" id="endTest" name="endTest"
+                                                    href="{% url 'student:test-bank' stu_ssn %}">End Test
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="span9">
+                                <div class="holder">
+                                    <br>
+                                    <br>
+
+
+                                    <label class="alert-error" id="error" style="display: none"></label>
+                                    <div class="questions-area">
+                                        <iframe src="{% url 'student:blank-bank' %}" id="QuestionContainer"
+                                                name="QuestionContainer"></iframe>
+
+                                    </div>
+                                </div>
+                            </div>
+                    </form>
+                </fieldset>
+            </div>
+
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,141 @@
+{% load static %}
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static '/resources/style/template.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static '/resources/style/selectFix.css' %}" type="text/css">
+    <script src="{% static '/resources/js/jquery-1.9.0.min.js' %}"></script>
+    <script src="{% static '/resources/js/bootstrap.min.js' %}"></script>
+    <script src="{% static '/resources/js/equalize.min.js' %}"></script>
+    <script src="{% static '/resources/js/selectFix.js' %}"></script>
+    <title>Candidate Login</title>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+
+       function date_time(id)
+{
+        date = new Date;
+        year = date.getFullYear();
+        month = date.getMonth();
+        months = new Array('January', 'February', 'March', 'April', 'May', 'June', 'Jully', 'August', 'September', 'October', 'November', 'December');
+        d = date.getDate();
+        day = date.getDay();
+        days = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday');
+        h = date.getHours();
+        if(h<10)
+        {
+                h = "0"+h;
+        }
+        m = date.getMinutes();
+        if(m<10)
+        {
+                m = "0"+m;
+        }
+        s = date.getSeconds();
+        if(s<10)
+        {
+                s = "0"+s;
+        }
+        result = ''+days[day]+' '+months[month]+' '+d+' '+year+' '+h+':'+m+':'+s;
+        document.getElementById(id).innerHTML = "Server Time: "+result;
+        setTimeout('date_time("'+id+'");','1000');
+        return true;
+}
+    </script>
+</head>
+
+<body class="osp inner loginpage division-group" cz-shortcut-listen="true" style="zoom: 1;">
+<div class="main">
+    <div class="osp-header">
+        <div class="container">
+            <div class="row"></div>
+        </div>
+    </div>
+    <div class="osp-content">
+        <div class="container">
+            <div class="row">
+                <div class="span12 main-content">
+                    <div class="content-holder">
+                        <div class="well">
+                            <div class="logo-holder text-center" style="padding-bottom : 10px;">
+                                <img src="{% static 'resources/images/1_mkcloeslogo.png' %}" alt="OES School Project">
+                                <hr id="dtSeprator"
+                                    style="border-top: 1px solid rgb(153, 153, 153); margin-bottom: 10px;">
+                                <div style="text-align: center;">
+                                    <b><span id="Date" style="color: red"> <script type="text/javascript">window.onload = date_time('Date');</script></span></b>
+                                </div>
+                            </div>
+                            <form id="loginform" action="{% url 'student:log' %}" method="POST">
+
+                                {% csrf_token %}
+                                <div class="login-type">
+                                    <span class="btn btn-login-type-small"><i class="icon-osp-large icon-us"></i></span>Candidate
+                                    Login
+                                </div>
+                                {% for message in messages %}
+
+                                    <div class="alert alert-success" style="color:red">
+                                        <a class="close" href="#" data-dismiss="alert">×</a>
+
+                                        {{ message }}
+                                    </div>
+                                {% endfor %}
+                                <div class="controls">
+                                    <i class="icon-greyer icon-user"></i>
+
+                                    <input id="userid" name="id" type="text" placeholder="ID" value="" required
+                                           pattern="[0-9]+" title="number only">
+                                </div>
+                                <div class="controls">
+                                    <i class="icon-greyer icon-lock"></i>
+                                    <input id="pass" name="password" type="password" placeholder="Password" value=""
+                                           required pattern="[0-9]+" title="number only">
+                                </div>
+
+                                <div class="text-center">
+                                    <button class="btn btn-primary" type="submit" id="btnSave">Login</button>
+                                </div>
+                            </form>
+                            <p class="version" style="text-align: center;">
+                                <b>
+                                    <a class="pull-left" href="../">Back</a>
+                                    <span>Version : 1.0</span>
+                                    <a class="pull-right" href="{% url 'adminstrator:log' %}">Administrator
+                                        Login</a></b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="osp-footer">
+        <div class="container">
+            <div class="row">
+                <div class="span8 copyright">
+                    <div class="holder">
+                        Copyright ©
+                        2018 CBE. All Rights Reserved.
+
+                    </div>
+                </div>
+                <div class="span4 scroll-to-top">
+                    <div class="holder">
+                        <a id="to-top" class="btn" href="#"><i class="icon-osp-small icon-upper"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
